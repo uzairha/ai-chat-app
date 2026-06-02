@@ -1,5 +1,12 @@
 import './App.css'
-import Message from './components/Message'
+import ChatWindow from './components/ChatWindow'
+
+const testMessages = [
+  { role: 'user', content: 'What is React?' },
+  { role: 'assistant', content: 'React is a JavaScript library for building user interfaces.' },
+  { role: 'user', content: 'Why do companies use it?' },
+  { role: 'assistant', content: 'Because it makes building complex UIs much simpler with reusable components.' },
+]
 
 function App() {
   return (
@@ -8,10 +15,7 @@ function App() {
         <h1>AI Chat</h1>
       </header>
 
-      <main className="chat-window">
-        <Message role="user" content="What is React?" />
-        <Message role="assistant" content="React is a JavaScript library for building user interfaces." />
-      </main>
+      <ChatWindow messages={testMessages} />
 
       <footer className="input-bar">
         <input type="text" placeholder="Type a message..." />
