@@ -1,4 +1,5 @@
 import './App.css'
+import Message from './components/Message'
 
 function App() {
   return (
@@ -8,7 +9,8 @@ function App() {
       </header>
 
       <main className="chat-window">
-        <p className="placeholder">Messages will appear here...</p>
+        <Message role="user" content="What is React?" />
+        <Message role="assistant" content="React is a JavaScript library for building user interfaces." />
       </main>
 
       <footer className="input-bar">
