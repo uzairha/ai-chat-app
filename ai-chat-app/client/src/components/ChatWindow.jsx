@@ -1,7 +1,7 @@
 import Message from './Message'
 import './ChatWindow.css'
 
-function ChatWindow({ messages }) {
+function ChatWindow({ messages, bottomRef }) {
   return (
     <div className="chat-window">
       {messages.length === 0 ? (
@@ -11,6 +11,7 @@ function ChatWindow({ messages }) {
           <Message key={index} role={msg.role} content={msg.content} />
         ))
       )}
+      <div ref={bottomRef} />
     </div>
   )
 }

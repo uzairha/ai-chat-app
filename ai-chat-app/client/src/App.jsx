@@ -1,17 +1,19 @@
+import { useState, useRef, useEffect } from 'react'
 import './App.css'
 import ChatWindow from './components/ChatWindow'
 import MessageInput from './components/MessageInput'
 
-const testMessages = [
-  { role: 'user', content: 'What is React?' },
-  { role: 'assistant', content: 'React is a JavaScript library for building user interfaces.' },
-  { role: 'user', content: 'Why do companies use it?' },
-  { role: 'assistant', content: 'Because it makes building complex UIs much simpler with reusable components.' },
-]
-
 function App() {
+  const [messages, setMessages] = useState([])
+  const bottomRef = useRef(null)
+
+  useEffect(() => {
+    bottomRef.current?.scrollIntoView({ behavior: 'smooth' })
+  }, [messages])
+
   function handleSend(text) {
-    console.log('Message sent:', text)
+    const userMessage = { role: 'user', content: text }
+    setMessages((prev) => [...prev, userMessage])
   }
 
   return (
@@ -20,7 +22,7 @@ function App() {
         <h1>AI Chat</h1>
       </header>
 
-      <ChatWindow messages={testMessages} />
+      <ChatWindow messages={messages} bottomRef={bottomRef} />
 
       <MessageInput onSend={handleSend} disabled={false} />
     </div>
