@@ -1,5 +1,6 @@
 import './App.css'
 import ChatWindow from './components/ChatWindow'
+import MessageInput from './components/MessageInput'
 
 const testMessages = [
   { role: 'user', content: 'What is React?' },
@@ -9,6 +10,10 @@ const testMessages = [
 ]
 
 function App() {
+  function handleSend(text) {
+    console.log('Message sent:', text)
+  }
+
   return (
     <div className="app-container">
       <header className="app-header">
@@ -17,10 +22,7 @@ function App() {
 
       <ChatWindow messages={testMessages} />
 
-      <footer className="input-bar">
-        <input type="text" placeholder="Type a message..." />
-        <button>Send</button>
-      </footer>
+      <MessageInput onSend={handleSend} disabled={false} />
     </div>
   )
 }
