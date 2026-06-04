@@ -1,29 +1,10 @@
-import { useState, useRef, useEffect } from 'react'
 import './App.css'
 import ChatWindow from './components/ChatWindow'
 import MessageInput from './components/MessageInput'
+import { useChat } from './hooks/useChat'
 
 function App() {
-  const [messages, setMessages] = useState([])
-  const [isLoading, setIsLoading] = useState(false)
-  const bottomRef = useRef(null)
-
-  useEffect(() => {
-    bottomRef.current?.scrollIntoView({ behavior: 'smooth' })
-  }, [messages, isLoading])
-
-  function handleSend(text) {
-    const userMessage = { role: 'user', content: text }
-    setMessages((prev) => [...prev, userMessage])
-    setIsLoading(true)
-
-    // temporary: simulate AI response after 2 seconds
-    setTimeout(() => {
-      const aiMessage = { role: 'assistant', content: 'This is a placeholder AI response.' }
-      setMessages((prev) => [...prev, aiMessage])
-      setIsLoading(false)
-    }, 2000)
-  }
+  const { messages, isLoading, bottomRef, handleSend } = useChat()
 
   return (
     <div className="app-container">
