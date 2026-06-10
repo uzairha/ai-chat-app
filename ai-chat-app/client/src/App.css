@@ -25,10 +25,13 @@ body {
 }
 
 .app-header {
-  padding: 20px 24px;
+  padding: 16px 24px;
   border-bottom: 1px solid #e5e7eb;
   background: #ffffff;
   border-radius: 12px 12px 0 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .app-header h1 {
@@ -37,3 +40,49 @@ body {
   color: #111827;
 }
 
+.clear-btn {
+  padding: 6px 14px;
+  background: transparent;
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+  font-size: 13px;
+  color: #6b7280;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.clear-btn:hover:not(:disabled) {
+  border-color: #dc2626;
+  color: #dc2626;
+}
+
+.clear-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.error-message {
+  padding: 8px 24px;
+  color: #dc2626;
+  font-size: 14px;
+  text-align: center;
+}
+
+@media (max-width: 640px) {
+  body {
+    align-items: stretch;
+    background: #ffffff;
+  }
+
+  .app-container {
+    height: 100vh;
+    height: 100dvh;
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  .app-header {
+    border-radius: 0;
+    padding: 14px 16px;
+  }
+}
