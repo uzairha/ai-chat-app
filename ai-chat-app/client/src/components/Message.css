@@ -42,3 +42,9 @@
   color: #111827;
   border-bottom-left-radius: 4px;
 }
+
+@media (max-width: 640px) {
+  .message {
+    max-width: 90%;
+  }
+}
